@@ -60,16 +60,16 @@ export const QuizTimer = () => {
 
   return (
     <div className={cn(
-      "glass-card px-4 py-2 rounded-xl flex items-center gap-3",
+      "glass-card px-3 sm:px-4 py-2 rounded-xl flex items-center gap-2 sm:gap-3",
       isLowTime && "animate-pulse"
     )}>
       <div className="relative">
         <Clock className={cn(
-          "w-6 h-6",
+          "w-5 sm:w-6 h-5 sm:h-6",
           isLowTime ? "text-red-400" : "text-indigo-500/90"
         )} />
         <svg
-          className="absolute top-0 left-0 -rotate-90 w-6 h-6"
+          className="absolute top-0 left-0 -rotate-90 w-5 sm:w-6 h-5 sm:h-6"
           viewBox="0 0 24 24"
         >
           <circle
@@ -98,7 +98,7 @@ export const QuizTimer = () => {
         </svg>
       </div>
       <span className={cn(
-        "font-mono font-bold transition-colors duration-300",
+        "font-mono font-bold text-sm sm:text-base transition-colors duration-300",
         isLowTime ? "text-red-400" : "text-indigo-500/90"
       )}>
         {displayTime}s

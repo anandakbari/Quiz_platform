@@ -36,11 +36,11 @@ export const QuizQuestion: React.FC = () => {
   if (question.type === 'integer') {
     return (
       <div className="w-full max-w-2xl mx-auto animate-fade-in">
-        <h2 className="text-2xl font-bold mb-8 text-gray-800 dark:text-gray-100">{question.question}</h2>
+        <h2 className="text-xl sm:text-2xl font-bold mb-6 sm:mb-8 text-gray-800 dark:text-gray-100">{question.question}</h2>
         
         {!isAnswered ? (
           <form onSubmit={handleIntegerSubmit} className="space-y-4">
-            <div className="glass-card p-6 rounded-xl">
+            <div className="glass-card p-4 sm:p-6 rounded-xl">
               <input
                 type="number"
                 value={integerAnswer}
@@ -48,7 +48,7 @@ export const QuizQuestion: React.FC = () => {
                   setIntegerAnswer(e.target.value);
                   setError('');
                 }}
-                className="w-full bg-transparent border-b-2 border-gray-300 dark:border-gray-700 focus:border-indigo-500 dark:focus:border-indigo-400 outline-none py-2 text-lg text-gray-800 dark:text-gray-100"
+                className="w-full bg-transparent border-b-2 border-gray-300 dark:border-gray-700 focus:border-indigo-500 dark:focus:border-indigo-400 outline-none py-2 text-base sm:text-lg text-gray-800 dark:text-gray-100"
                 placeholder="Enter your answer..."
               />
               {error && (
@@ -57,32 +57,32 @@ export const QuizQuestion: React.FC = () => {
             </div>
             <button
               type="submit"
-              className="w-full bg-indigo-500/90 text-white px-6 py-3 rounded-xl font-semibold hover:bg-indigo-600/90 transition-all duration-300 transform hover:scale-[1.02] hover:shadow-lg"
+              className="w-full bg-indigo-500/90 text-white px-4 sm:px-6 py-3 rounded-xl font-semibold hover:bg-indigo-600/90 transition-all duration-300 transform hover:scale-[1.02] hover:shadow-lg text-base sm:text-lg"
             >
               Submit Answer
             </button>
           </form>
         ) : (
           <div className={cn(
-            'glass-card p-6 rounded-xl animate-fade-in',
+            'glass-card p-4 sm:p-6 rounded-xl animate-fade-in',
             isCorrect 
               ? 'bg-green-50 dark:bg-black border-green-500/30' 
               : 'bg-red-50 dark:bg-black border-red-500/30'
           )}>
-            <div className="flex items-center gap-3 mb-4">
+            <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
               {isCorrect ? (
                 <>
-                  <CheckCircle2 className="w-6 h-6 text-green-500 dark:text-green-400" />
+                  <CheckCircle2 className="w-5 sm:w-6 h-5 sm:h-6 text-green-500 dark:text-green-400" />
                   <p className="font-semibold text-green-700 dark:text-green-400">Correct!</p>
                 </>
               ) : (
                 <>
-                  <XCircle className="w-6 h-6 text-red-500 dark:text-red-400" />
+                  <XCircle className="w-5 sm:w-6 h-5 sm:h-6 text-red-500 dark:text-red-400" />
                   <p className="font-semibold text-red-700 dark:text-red-400">Incorrect!</p>
                 </>
               )}
             </div>
-            <div className="flex justify-between items-center text-lg">
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center text-base sm:text-lg gap-2 sm:gap-0">
               <p>Your answer: <span className="font-semibold">{selectedAnswer}</span></p>
               {!isCorrect && (
                 <p className="text-gray-600 dark:text-gray-300">
@@ -98,8 +98,8 @@ export const QuizQuestion: React.FC = () => {
 
   return (
     <div className="w-full max-w-2xl mx-auto animate-fade-in">
-      <h2 className="text-2xl font-bold mb-8 text-gray-800 dark:text-gray-100">{question.question}</h2>
-      <div className="space-y-4">
+      <h2 className="text-xl sm:text-2xl font-bold mb-6 sm:mb-8 text-gray-800 dark:text-gray-100">{question.question}</h2>
+      <div className="space-y-3 sm:space-y-4">
         {question.options.map((option, index) => {
           const isSelected = selectedAnswer === index;
           const isCorrectAnswer = index === question.correctAnswer;
@@ -110,8 +110,8 @@ export const QuizQuestion: React.FC = () => {
               onClick={() => handleAnswerSelect(index)}
               disabled={isAnswered}
               className={cn(
-                'w-full p-6 text-left rounded-xl transition-all duration-300 transform hover:scale-[1.01] relative option-card',
-                'font-medium text-lg glass-card',
+                'w-full p-4 sm:p-6 text-left rounded-xl transition-all duration-300 transform hover:scale-[1.01] relative option-card',
+                'font-medium text-base sm:text-lg glass-card',
                 isAnswered ? (
                   isCorrectAnswer
                     ? 'bg-green-50 dark:bg-black border-green-500/30 text-green-700 dark:text-green-400'
@@ -130,7 +130,7 @@ export const QuizQuestion: React.FC = () => {
               <div className="flex items-center justify-between">
                 <div className="flex items-center">
                   <div className={cn(
-                    'w-2 h-2 rounded-full mr-4 transition-colors duration-300',
+                    'w-2 h-2 rounded-full mr-3 sm:mr-4 transition-colors duration-300',
                     isAnswered ? (
                       isCorrectAnswer
                         ? 'bg-green-500'
@@ -144,9 +144,9 @@ export const QuizQuestion: React.FC = () => {
                 {isAnswered && (isSelected || isCorrectAnswer) && (
                   <div className="flex items-center animate-fade-in">
                     {isCorrectAnswer ? (
-                      <CheckCircle2 className="w-6 h-6 text-green-500 dark:text-green-400 ml-2" />
+                      <CheckCircle2 className="w-5 sm:w-6 h-5 sm:h-6 text-green-500 dark:text-green-400 ml-2" />
                     ) : (
-                      <XCircle className="w-6 h-6 text-red-500 dark:text-red-400 ml-2" />
+                      <XCircle className="w-5 sm:w-6 h-5 sm:h-6 text-red-500 dark:text-red-400 ml-2" />
                     )}
                   </div>
                 )}
@@ -158,26 +158,26 @@ export const QuizQuestion: React.FC = () => {
 
       {isAnswered && (
         <div className={cn(
-          'mt-6 p-6 rounded-xl animate-fade-in glass-card',
+          'mt-4 sm:mt-6 p-4 sm:p-6 rounded-xl animate-fade-in glass-card',
           isCorrect 
             ? 'bg-green-50 dark:bg-black border-green-500/30' 
             : 'bg-red-50 dark:bg-black border-red-500/30'
         )}>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3">
             {isCorrect ? (
               <>
-                <CheckCircle2 className="w-6 h-6 text-green-500 dark:text-green-400" />
+                <CheckCircle2 className="w-5 sm:w-6 h-5 sm:h-6 text-green-500 dark:text-green-400" />
                 <p className="font-semibold text-green-700 dark:text-green-400">Correct!</p>
               </>
             ) : (
               <>
-                <XCircle className="w-6 h-6 text-red-500 dark:text-red-400" />
+                <XCircle className="w-5 sm:w-6 h-5 sm:h-6 text-red-500 dark:text-red-400" />
                 <p className="font-semibold text-red-700 dark:text-red-400">Incorrect!</p>
               </>
             )}
           </div>
           <p className={cn(
-            'mt-2',
+            'mt-2 text-sm sm:text-base',
             isCorrect ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'
           )}>
             {isCorrect
