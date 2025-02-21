@@ -2,7 +2,16 @@
 
 A modern, interactive quiz application built with React, TypeScript, and Tailwind CSS. Test your knowledge across various subjects with both multiple-choice and numerical answer questions.
 
-![Quiz App Screenshot](https://images.unsplash.com/photo-1606326608606-aa0b62935f2b?auto=format&fit=crop&q=80&w=2000)
+
+## Image Gallery
+![image](https://github.com/user-attachments/assets/0ecf0570-57f7-4da3-a2e0-e7a14680f58f)
+![image](https://github.com/user-attachments/assets/af1d552e-99ac-4185-b6da-7ed1a325935d)
+![image](https://github.com/user-attachments/assets/1ce83313-9dcd-4ce6-b051-a601aabf6bca)
+![image](https://github.com/user-attachments/assets/0514bd9b-39d1-4e0e-830d-a52ed66200d0)
+![image](https://github.com/user-attachments/assets/038a91de-6e95-4e87-9641-55fdb8742c77)
+
+
+
 
 ## Features
 
