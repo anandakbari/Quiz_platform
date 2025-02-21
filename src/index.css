@@ -2,37 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Prevent any unwanted transitions on page load */
+/* Prevent FOUC and initial animation flickers */
 .no-transitions * {
   transition: none !important;
+  animation: none !important;
 }
 
-/* Animations with GPU acceleration */
+/* Base animations */
 @keyframes fadeIn {
-  from { 
-    opacity: 0; 
-    transform: translate3d(0, 10px, 0);
+  0% { 
+    opacity: 0;
   }
-  to { 
-    opacity: 1; 
-    transform: translate3d(0, 0, 0);
+  100% { 
+    opacity: 1;
   }
 }
 
-@keyframes scaleIn {
-  from { 
-    opacity: 0; 
-    transform: scale3d(0.95, 0.95, 1);
-  }
-  to { 
-    opacity: 1; 
-    transform: scale3d(1, 1, 1);
-  }
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out forwards;
 }
 
-/* Base styles with stable background */
+/* Base styles */
 :root {
   color-scheme: light;
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
@@ -42,9 +35,9 @@ body {
   background-attachment: fixed;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overscroll-behavior: none;
 }
 
-/* Dark mode styles with stable background */
 .dark body {
   @apply text-gray-100;
   background-color: #000000;
@@ -52,17 +45,12 @@ body {
   background-attachment: fixed;
 }
 
-/* Glass card base styles with reduced motion */
+/* Glass card with solid background */
 .glass-card {
-  @apply backdrop-blur-lg border relative;
-  background-color: rgba(255, 255, 255, 0.95);
+  @apply backdrop-blur-lg border relative bg-white;
   border-color: rgba(229, 231, 235, 0.5);
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  transform: translate3d(0, 0, 0);
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  perspective: 1000;
-  -webkit-perspective: 1000;
+  transform: translateZ(0);
 }
 
 .dark .glass-card {
@@ -71,30 +59,26 @@ body {
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
-/* Option card with optimized transforms */
+/* Option card with stable rendering */
 .option-card {
-  @apply relative overflow-hidden;
-  background-color: rgba(255, 255, 255, 0.95);
-  transform: translate3d(0, 0, 0);
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  perspective: 1000;
-  -webkit-perspective: 1000;
+  @apply relative overflow-hidden bg-white;
+  transform: translateZ(0);
+  touch-action: manipulation;
+  border: 1px solid rgba(229, 231, 235, 0.8);
 }
 
-/* Hover states with reduced properties */
-@media (hover: hover) {
-  .option-card {
+/* Desktop hover interactions */
+@media (hover: hover) and (pointer: fine) {
+  .option-card:not(:disabled) {
     transition: transform 0.2s ease-out,
                 background-color 0.2s ease-out;
   }
 
   .option-card:not(:disabled):hover {
-    background-color: rgba(255, 255, 255, 0.98);
-    transform: translate3d(0, -1px, 0);
+    background-color: #f8fafc;
+    transform: translateY(-1px);
   }
 
-  /* Gradient overlay */
   .option-card::before {
     content: '';
     position: absolute;
@@ -114,44 +98,42 @@ body {
   }
 }
 
-/* Touch device interactions */
-@media (hover: none) {
-  .option-card {
-    transition: transform 0.2s ease-out;
-  }
-
+/* Mobile touch interactions */
+@media (hover: none), (pointer: coarse) {
   .option-card:not(:disabled):active {
-    transform: scale3d(0.98, 0.98, 1);
+    transform: scale(0.98);
+    transition: transform 0.1s ease-out;
+  }
+  
+  .option-card:not(:disabled):hover {
+    transform: none;
+    background-color: inherit;
+  }
+  
+  .option-card::before {
+    display: none;
   }
 }
 
-/* Dark theme with simplified transitions */
+/* Dark theme */
 .dark .option-card {
   background-color: rgba(0, 0, 0, 0.8);
 }
 
-@media (hover: hover) {
-  .dark .option-card:hover {
+@media (hover: hover) and (pointer: fine) {
+  .dark .option-card:not(:disabled):hover {
     background-color: rgba(17, 24, 39, 0.7);
   }
-
-  .dark .option-card::before {
-    background: linear-gradient(45deg,
-      rgba(99, 102, 241, 0.1),
-      rgba(168, 85, 247, 0.1)
-    );
-  }
 }
 
-/* Animation utilities with hardware acceleration */
-.animate-fade-in {
-  animation: fadeIn 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
+/* Quiz content animations */
+.quiz-content {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
 }
 
-.animate-scale-in {
-  animation: scaleIn 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
+.quiz-content-enter {
+  opacity: 0;
+  transform: translateY(-10px);
 }

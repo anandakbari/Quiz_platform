@@ -158,7 +158,8 @@ function App() {
         <DarkGradientBackground />
       </div>
       <div className="max-w-4xl mx-auto px-4 sm:px-6">
-        <div className="glass-card rounded-2xl shadow-xl p-4 sm:p-8 mb-4 sm:mb-6">
+        {/* Add quiz-content class here */}
+        <div className="glass-card rounded-2xl shadow-xl p-4 sm:p-8 mb-4 sm:mb-6 quiz-content">
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4 sm:gap-8 mb-6 sm:mb-8">
             <QuizTimer />
             <QuizProgress />
@@ -166,7 +167,7 @@ function App() {
           <QuizQuestion />
         </div>
         {answers[questions[currentQuestion].id] !== undefined && (
-          <div className="flex justify-end animate-slide-in">
+          <div className="flex justify-end animate-slide-in quiz-content">
             <button
               onClick={handleNextQuestion}
               className="w-full sm:w-auto bg-indigo-500/90 text-white px-6 sm:px-8 py-3 rounded-xl font-semibold hover:bg-indigo-600/90 transition-all duration-300 transform hover:scale-[1.02] hover:shadow-lg"
