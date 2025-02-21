@@ -4,6 +4,9 @@ A modern, interactive quiz application built with React, TypeScript, and Tailwin
 
 # Deployment Link : [Quiz Platform](https://quiz-platform-eight.vercel.app/)
 
+# Video Walkthrough
+https://www.loom.com/share/caf072c489654414a365d605184c30a9?sid=bd1f3904-2be9-4c34-8505-82a805f5272d
+
 ## Image Gallery
 ![image](https://github.com/user-attachments/assets/0ecf0570-57f7-4da3-a2e0-e7a14680f58f)
 ![image](https://github.com/user-attachments/assets/af1d552e-99ac-4185-b6da-7ed1a325935d)
