@@ -13,13 +13,19 @@
   to { opacity: 1; transform: scale(1); }
 }
 
-/* Base styles */
+/* Base styles - Light mode by default */
+:root {
+  color-scheme: light;
+}
+
 body {
-  @apply antialiased text-gray-900 dark:text-gray-100;
+  @apply antialiased text-gray-900;
   background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 50%, #e9ecef 100%);
 }
 
-body.dark {
+/* Dark mode styles - Only applied when .dark class is present */
+.dark body {
+  @apply text-gray-100;
   background: linear-gradient(to bottom, #000000, #0a0a0a, #000000);
 }
 
@@ -47,9 +53,10 @@ body.dark {
               background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateZ(0);
   backface-visibility: hidden;
+  background: rgba(255, 255, 255, 0.95);
 }
 
-/* Light theme hover effects */
+/* Light theme hover effects (default) */
 .option-card:not(:disabled):hover {
   background: rgba(255, 255, 255, 0.98);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
@@ -72,7 +79,11 @@ body.dark {
   opacity: 1;
 }
 
-/* Dark theme hover effects */
+/* Dark theme styles - Only applied when .dark class is present */
+.dark .option-card {
+  background: rgba(0, 0, 0, 0.8);
+}
+
 .dark .option-card:hover {
   background: rgba(17, 24, 39, 0.7);
   box-shadow: 0 0 20px rgba(99, 102, 241, 0.1);
