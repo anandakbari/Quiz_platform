@@ -2,6 +2,7 @@
 
 A modern, interactive quiz application built with React, TypeScript, and Tailwind CSS. Test your knowledge across various subjects with both multiple-choice and numerical answer questions.
 
+# Deployment Link : [Quiz Platform](https://quiz-platform-eight.vercel.app/)
 
 ## Image Gallery
 ![image](https://github.com/user-attachments/assets/0ecf0570-57f7-4da3-a2e0-e7a14680f58f)
