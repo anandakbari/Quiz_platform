@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Base styles */
+body {
+  @apply antialiased text-gray-900 dark:text-gray-100;
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 50%, #e9ecef 100%);
+}
+
+body.dark {
+  background: linear-gradient(to bottom, #000000, #0a0a0a, #000000);
+}
+
+/* Glass card base styles */
+.glass-card {
+  @apply backdrop-blur-lg border relative;
+  background: rgba(255, 255, 255, 0.95);
+  border-color: rgba(229, 231, 235, 0.5);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  transform: translateZ(0); /* Force GPU acceleration */
+  will-change: transform, box-shadow;
+}
+
+.dark .glass-card {
+  background: rgba(0, 0, 0, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* Option card specific styles */
+.option-card {
+  @apply relative overflow-hidden;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Light theme hover effects */
+.option-card:not(:disabled):hover {
+  background: rgba(255, 255, 255, 0.98);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  transform: translateY(-1px) translateZ(0);
+}
+
+/* Gradient overlay for hover */
+.option-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(45deg, rgba(99, 102, 241, 0.05), rgba(99, 102, 241, 0.1));
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.option-card:not(:disabled):hover::before {
+  opacity: 1;
+}
+
+/* Dark theme hover effects */
+.dark .option-card:hover {
+  background: rgba(17, 24, 39, 0.7);
+  box-shadow: 0 0 20px rgba(99, 102, 241, 0.1);
+}
+
+.dark .option-card::before {
+  background: linear-gradient(45deg, rgba(99, 102, 241, 0.1), rgba(168, 85, 247, 0.1));
+}
+
+/* Animation utilities */
+.animate-fade-in {
+  animation: fadeIn 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
