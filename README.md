@@ -1,4 +1,4 @@
-# Interactive Quiz Applications
+# Interactive Quiz Applicationsss
 
 A modern, interactive quiz application built with React, TypeScript, and Tailwind CSS. Test your knowledge across various subjects with both multiple-choice and numerical answer questions.
 
