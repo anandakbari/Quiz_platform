@@ -1,7 +1,6 @@
 # Interactive Quiz Application
 
 A modern, interactive quiz application built with React, TypeScript, and Tailwind CSS. Test your knowledge across various subjects with both multiple-choice and numerical answer questions.
-hellomynameis anand
 ## Deployment Link : [Quiz Platform](https://quiz-platform-eight.vercel.app/)
 dfasfds
 ## Video Walkthrough
