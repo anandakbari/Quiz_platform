@@ -3,7 +3,7 @@
 A modern, interactive quiz application built with React, TypeScript, and Tailwind CSS. Test your knowledge across various subjects with both multiple-choice and numerical answer questions.
 hellomynameis anand
 ## Deployment Link : [Quiz Platform](https://quiz-platform-eight.vercel.app/)
-dgsdsg
+
 ## Video Walkthrough
 https://www.loom.com/share/caf072c489654414a365d605184c30a9?sid=bd1f3904-2be9-4c34-8505-82a805f5272d
 
